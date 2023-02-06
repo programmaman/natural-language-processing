@@ -1,5 +1,5 @@
 # Levenshtein Edit Distance
-def problem2(string1, string2):
+def leveshtein(string1, string2):
     # Create Table
     row = len(string1) + 1
     column = len(string2) + 1
