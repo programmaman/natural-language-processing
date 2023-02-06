@@ -1,4 +1,4 @@
-mport nltk, json, re
+import nltk, json, re
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
