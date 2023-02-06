@@ -4,7 +4,7 @@ import re
 # TODO: /structure to allow for more powerful meaning inferences
 
 # Extract Hyper and Hypo Relationships
-def problem1(noun_list, corpus):
+def hypernym_hyponym(noun_list, corpus):
 
     # Lower the case of all text, remove all formatting and remove unnecessary "a", "an", "the"
     corpus = regularize_text(corpus)
