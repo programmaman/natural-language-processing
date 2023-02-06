@@ -10,6 +10,43 @@ from sklearn.linear_model import LogisticRegression
 
 nltk.download('stopwords')
 
+
+# global variable to store model
+model = None
+
+# global variable to store logistic regression classifier
+logistic_regression_model = LogisticRegression(random_state=0)
+
+# stopwords list
+stopwords_list = set(stopwords.words('english'))
+
+
+def tokenize(string):
+    string = string.lower()
+    # string = re.sub(r'(\.(?!\S))', ' </s> <s> ', string)
+    # string = re.sub(r'(\?(?!\S))', ' </s> <s> ', string)
+    string = re.sub(r'[\.\,;:—"”()]', ' ', string)  # remove all formatting characters except whitespace
+    string = re.sub(r'\s+', ' ', string)
+    string = re.sub(r'\b[a-zA-Z]\s', ' ', string)
+    return re.split("\\s+", string)
+
+
+# returns a vector value if embedding exists and returns an empty embedding value if not
+def getVector(w):
+    global model
+
+    if w in model:
+        return model[w]
+
+    else:
+        return np.zeros(300)
+
+
+def setModel(Model):
+    global model
+    model = Model
+
+
 def classifySubreddit_train(trainFile):
     global model
     global logistic_regression_model
